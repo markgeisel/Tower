@@ -1,0 +1,1 @@
+if invulnerable=0&&other.Health=0{instance_destroy(other)}

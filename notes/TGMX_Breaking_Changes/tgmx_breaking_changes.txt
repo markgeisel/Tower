@@ -1,0 +1,52 @@
+
+=================
+Breaking Changes
+=================
+	
+	-TweenFinish() now affects delays by default and has 1 required and 3 optional parameters
+		
+		-> TweenFinish(tween[s], [call_event?, finish_delay?, call_delay_event?])
+			* [call_event] and [call_delay_event] are true by default
+			* TweenFinishDelay() still exists for those only wanting to affect delayed tweens
+	
+	
+	- Changed TweenGetDefault() and TweenSetDefault() naming to TweenDefaultGet() and TweenDefaultSet()
+		* This is for better naming consistency, as TweenGroupGet() and TweenGroupSet() might also become a thing in the future
+		
+	- Changed naming for legacy global "health" and "score" to "health!" and "score!"
+		* This allows instances and structs to now use health and score variable names
+		* Note that self.health and self.score must be used to access values for instances
+
+	- Methods passed to callbacks are now assigned targets
+		* Using the keyword [undefined] as a target will have the method use its original instance/struct environment
+		* Please update any callbacks making use of methods which may be affected -- Make sure intended environment is called
+		
+	- "Normalized Durations" have been changed.
+		* Structs are now used to enable the feature, not arrays.
+		* The struct can take 1 of 3 different fields for setting the calculation method:
+			1) rate:	-> duration equals the sum of all absolute change values divided by the given rate
+			2) weight:  -> duration is affected by the weighting of property values
+			3) cut:		-> method used in previous betas -- similar to 'rate' but divides the final duration by the number of properties included
+		
+		* The field 'use:' can also be set to specify the amount of properties to include in the calculation.
+			
+		* Examples:
+			// Use 'rate:' to set duration
+			TweenFire(id, "io", 0, true, 0, {rate:50}, "x", 0, 100, "y", 0, 100); // 4 Seconds
+			
+			// Use 'weight:' to set duration
+			TweenFire(id, "io", 0, true, 0, {weight:50}, "x", 0, 100, "y", 0, 100); // 3 Seconds
+			
+			// Use 'cut:" to set duration
+			TweenFire(id, "io", 0, true, 0, {cut:50}, "x", 0, 100, "y", 0, 100); // 2 Seconds
+			
+			// Use only the first 2 properties for duration calculation
+			TweenFire(id, "io", 0, true, 0, {rate:50, use:2}, "x>", 100, "y>", 100, "image_angle", 0, 360); // 4 Seconds
+			
+		* Remember that "Normalized Durations" work slightly different between step and delta timing:
+		
+			STEP:  Amount of change per step (on average)
+			Delta: Amount of change per second (on average)
+
+
+	

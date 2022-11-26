@@ -1,0 +1,11 @@
+Health = 2
+float = 0
+z = 0;
+zSpeed = 0;
+grv = 2;
+depth=-10000
+bounce=0;
+target=instance_nearest(x,y,P_Enemy)
+targetx=target.x
+targety=target.y
+		direction = point_direction(x,y,target.x,target.y);

@@ -1,0 +1,1 @@
+shadow_casters_exist();

@@ -1,0 +1,30 @@
+function Playerstate_bonkW() {
+	// player state bonk is a knock back that occurs when hit by enemies and when dashing into walls
+
+
+
+
+	hSpeed = lengthdir_x(speedBonk, direction-180);
+	vSpeed = lengthdir_y(speedBonk, direction-180);
+
+	moveDistanceRemaining = max(0, moveDistanceRemaining - speedBonk);
+	var _collided = PlayerCullW(); 
+
+
+	sprite_index = Warrior_idle;
+	image_index = CARDINAL_DIR-2;
+	_collided =false;
+	z= sin(((moveDistanceRemaining / distanceBonk) * pi )) * distanceBonkHeight;
+	
+
+	
+	 if(moveDistanceRemaining <=0)
+	{
+		stateW = Playerstate_freeW;
+
+
+	}	
+
+
+
+}

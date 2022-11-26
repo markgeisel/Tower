@@ -1,0 +1,9 @@
+{
+  "extensionId": {
+    "name": "Geon_FX_Runtime",
+    "path": "extensions/Geon_FX_Runtime/Geon_FX_Runtime.yy"
+  },
+  "resourceVersion": "1.0",
+  "resourceType": "GMExtensionConfigSet",
+  "configurables": null
+}

@@ -1,0 +1,9 @@
+Health = 1
+float = 0
+z = 0;
+zSpeed = 0;
+grv = 0.5;
+safety=0
+damage=0.5
+counter=0
+depth=-200
